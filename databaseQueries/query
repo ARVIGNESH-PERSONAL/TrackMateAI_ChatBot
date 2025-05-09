@@ -10,3 +10,13 @@ create table EmployeeProject (Email nvarchar(25),ProjectName nvarchar(25),create
 
 Insert into EmployeeProject values('vignesha@unitedtechno.com','Legasuite',GETDATE(),GETDATE())
 Insert into EmployeeProject values('vignesha@unitedtechno.com','Heritage',GETDATE(),GETDATE())
+
+CREATE TABLE TaskLog (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    Email NVARCHAR(25),
+    ProjectName NVARCHAR(25),
+    TaskDescription NVARCHAR(MAX),
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+select * from TaskLog
