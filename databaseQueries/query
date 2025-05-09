@@ -1,7 +1,12 @@
 create database TrackMateAI_Chatbot
-
 use TrackMateAI_Chatbot
 
-create table EmployeeRecord (id int IDENTITY(101, 1) primary key,Email nvarchar(25),Password nvarchar(25),createdAt datetime,modifiedAt datetime);
+create table EmployeeRecord (Email nvarchar(25) primary key,Password nvarchar(25),createdAt datetime,modifiedAt datetime);
 
 Insert into EmployeeRecord values ('vignesha@unitedtechno.com','12345',GETDATE(),GETDATE())
+
+
+create table EmployeeProject (Email nvarchar(25),ProjectName nvarchar(25),createdAt datetime,modifiedAt datetime, FOREIGN KEY (Email) REFERENCES EmployeeRecord(Email),PRIMARY KEY (Email, ProjectName));
+
+Insert into EmployeeProject values('vignesha@unitedtechno.com','Legasuite',GETDATE(),GETDATE())
+Insert into EmployeeProject values('vignesha@unitedtechno.com','Heritage',GETDATE(),GETDATE())
