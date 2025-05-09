@@ -1,41 +1,66 @@
-import React from 'react';
-import ChatBot from 'react-chatbotify';
+import React from "react";
+import ChatBot from "react-chatbotify";
 
 const flow = {
   start: {
-    message: "Hello, how can I assist you today?",
-    path: "askForTask"
+    message: "Hi,\nEnter your email:",
+    path: "emailInput",
   },
-  askForTask: {
-    message: "Please describe your task for the day.",
-    path: "end"
+  emailInput: {
+    user: true,
+    path: async (input, { setState }) => {
+      console.log("Test", input); // Log the input email
+
+      const res = await fetch("http://127.0.0.1:5000/api/check-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: input }),
+      });
+      const data = await res.json();
+      console.log("Email check response:", data);
+
+      if (data.exists) {
+        setState({ email: input }); // Save the email to state
+        return "askPassword"; // Move to the next step
+      } else {
+        return {
+          message: "Incorrect email.",
+          path: "emailInput", // Stay in the current step if email is incorrect
+        };
+      }
+    },
   },
-  end: {
-    message: "Thank you for your update!",
-  }
+  askPassword: {
+    message: "Enter your password:",
+    path: "passwordInput",
+  },
+  passwordInput: {
+    user: true,
+    path: async (input, { getState }) => {
+      const email = getState().email; // Get the email from state
+
+      const res = await fetch("http://127.0.0.1:5000/api/verify-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password: input }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        return {
+          message: "Login successful!",
+        };
+      } else {
+        return {
+          message: "Incorrect password.",
+          path: "passwordInput", // Stay in the current step if password is incorrect
+        };
+      }
+    },
+  },
 };
 
-function App() {
-  return (
-    <div>
-      <h1>Employee Daily Logs</h1>
-      <ChatBot
-        id="chatbot"
-        settings={{
-          general: {
-            embedded: true // The chatbot is embedded on the page
-          },
-          voice: {
-            disabled: false // Enabling voice for both input and output
-          },
-          chatHistory: {
-            storageKey: "example_voice" // Key to store chat history in local storage
-          }
-        }}
-        flow={flow}
-      />
-    </div>
-  );
-}
+const App = () => {
+  return <ChatBot flow={flow} settings={{ general: { embedded: true } }} />;
+};
 
 export default App;

@@ -1,0 +1,7 @@
+create database TrackMateAI_Chatbot
+
+use TrackMateAI_Chatbot
+
+create table EmployeeRecord (id int IDENTITY(101, 1) primary key,Email nvarchar(25),Password nvarchar(25),createdAt datetime,modifiedAt datetime);
+
+Insert into EmployeeRecord values ('vignesha@unitedtechno.com','12345',GETDATE(),GETDATE())
