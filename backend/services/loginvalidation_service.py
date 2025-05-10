@@ -12,6 +12,8 @@ class LoginValidation_Service:
     def verify_password(self, email, password):
         conn = get_db_connection()
         cursor = conn.cursor()
+        print("Email type:", type(email))
+        print("Password type:", type(password))
         cursor.execute("SELECT COUNT(1) FROM EmployeeRecord WHERE Email = ? AND Password = ?", (email, password))
         result = cursor.fetchone()
         conn.close()
