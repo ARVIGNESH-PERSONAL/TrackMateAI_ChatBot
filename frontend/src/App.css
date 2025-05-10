@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+.rcb-chat-header {
+  background-color: #003366;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.rcb-notification-icon  , .rcb-chat-footer-container{
+  display: none !important;
+}

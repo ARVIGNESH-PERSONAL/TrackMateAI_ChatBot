@@ -18,14 +18,17 @@ def check_email():
 
 @loginvalidation_controller.route("/api/verify-password", methods=["POST"])
 def verify_password():
-    data = request.get_json()  # Use get_json() for consistency
-    email = data.get("email")
-    password = data.get("password")
+    try:
+        data = request.get_json()
+        email = data.get("email")
+        password = data.get("password")
 
-    if not email or not password:
-        return jsonify({"error": "Email and password are required"}), 400
+        if not email or not password:
+            return jsonify({"error": "Missing fields"}), 400
 
-    # Verify password using the service
-    is_valid = email_service.verify_password(email, password)
-    
-    return jsonify({"valid": is_valid})
+        is_valid = email_service.verify_password(email, password)
+        return jsonify({"exists": is_valid, "isAdmin": "true" if is_valid else "false"})
+
+    except Exception as e:
+        print("Error in verify-password:", e)
+        return jsonify({"error": "Internal Server Error"}), 500
