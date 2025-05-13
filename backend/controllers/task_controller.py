@@ -8,11 +8,10 @@ task_service = Task_Service()
 def add_task():
     data = request.get_json()
     email = data.get("email")
-    project = data.get("project")
-    task = data.get("task")
-
-    if not all([email, project, task]):
+    projectDetails = data.get("projectDetails")
+    print ('project' , projectDetails)
+    if not all([email, projectDetails]):
         return jsonify({"error": "Missing required fields"}), 400
 
-    task_service.insert_task(email, project, task)
+    task_service.insert_task(email, projectDetails)
     return jsonify({"message": "Task added successfully"})
