@@ -1,10 +1,18 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: -webkit-fill-available;
+  padding: 0.5rem 1rem;
+  height: 90vh;
+  width: -webkit-fill-available;
 }
 
+.ut-logo{
+  height:3rem;
+  margin-left:1rem
+}
+
+.burger-icon{
+  height: 3rem
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -42,12 +50,194 @@
 }
 
 .rcb-chat-header {
-  background-color: #003366;
+  
   color: white;
   font-weight: bold;
   padding: 10px;
+  font-size:1.2rem;
 }
 
 .rcb-notification-icon  , .rcb-chat-footer-container{
   display: none !important;
+}
+
+.header_section{
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rcb-bot-message{
+
+  font-size: 0.8rem;
+  font-style:italic;
+  background-color: #82868d !important;
+  color:#000000 !important;
+  font-weight: 700 !important;
+  border-radius:5px  20px  20px  20px;
+  
+}
+
+.rcb-user-message{
+  font-size: 0.8rem;
+  font-style:italic;
+  background-color: #56CC9D !important;
+  color:#333333 !important;
+  font-weight: 700 !important;
+  border-radius: 20px 20px 5px 20px;
+
+
+}
+
+.rcb-chat-body-container {
+  background: linear-gradient(120deg, #0f0f0f , #2c2c2c , #5a5b5e ) ;
+  background-size: 300% 300%;
+  animation: greyPulse 10s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(150, 150, 150, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes greyPulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+#root{
+  background-image: url('../src/assets/astro.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 97vh;
+  margin: 0;
+}
+
+ .glow {
+      font-size: 2rem;
+      color: #fff;
+      animation: glowPulse 3s ease-in-out infinite;
+      font-family: 'Arial', sans-serif;
+      margin-left:2rem;
+      margin-top:3rem;
+      display: flex;
+    }
+
+    @keyframes glowPulse {
+      0% {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #0ff,
+                     0 0 15px #0ff,
+                     0 0 20px #0ff;
+      }
+      50% {
+        text-shadow: 0 0 10px #0ff,
+                     0 0 20px #0ff,
+                     0 0 30px #0ff,
+                     0 0 40px #0ff;
+      }
+      100% {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #0ff,
+                     0 0 15px #0ff,
+                     0 0 20px #0ff;
+      }
+    }
+
+
+    
+.typewriter-text {
+  font-family: 'Courier New', monospace;
+  font-size: 2rem;
+  color: #fff8b0;
+  text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffea00;
+  overflow: hidden;
+  border-right: 2px solid #ffd700;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 10s steps(18) 1s infinite, blink 4s step-end infinite;
+}
+
+@keyframes typing {
+  0% { width: 0 }
+  50% { width: 18ch } /* Adjust to your text length */
+  90% { width: 18ch }
+  100% { width: 0 }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.div_section{
+      height: 20rem;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    align-content: center;
+    
+    flex-direction: column;
+}
+
+.para{
+  font-size: 1.2rem;
+  width:35%;
+  margin-left:2rem;
+}
+
+.rcb-chat-input{
+   background-color: #4a33b3;
+   border:none;
+}
+
+.rcb-chat-header-container{
+  background-color: #4a33b3 !important;
+  border:none;
+  
+} 
+
+.rcb-send-button{
+  background-color: #b51bb9 !important;
+}
+
+
+.rcb-chat-input-textarea {
+  color: #ffff;
+  font-weight: 700;
+  background-color: transparent;
+  border: 1px solid #000000;
+  font-family: 'Cambria';
+  font-style: italic;
+}
+
+@keyframes flameFlicker {
+  0% {
+    text-shadow:
+      0 0 2px #ff9933,
+      0 0 5px #ff6600,
+      0 0 10px #ff3300,
+      0 0 15px #ff0000;
+  }
+  50% {
+    text-shadow:
+      0 0 4px #ffcc70,
+      0 0 8px #ff6600,
+      0 0 15px #ff3300,
+      0 0 25px #ff2200;
+  }
+  100% {
+    text-shadow:
+      0 0 1px #ff9933,
+      0 0 4px #ff6600,
+      0 0 8px #ff3300,
+      0 0 12px #cc2200;
+  }
 }

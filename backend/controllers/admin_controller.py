@@ -33,11 +33,15 @@ Here is the task log data:
 
 Answer the following admin query based on the above data:
 "{question}"
+
+since I am getting direct asnwers from you and displaying to the user do dont use from the above data like sentences
+
 """
 
     # Get AI response
     try:
         ai_response = ask_gemini(prompt)
+        print('ai_response'  , ai_response)
         return jsonify({"response": ai_response})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

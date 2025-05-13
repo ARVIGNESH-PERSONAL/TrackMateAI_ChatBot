@@ -14,7 +14,8 @@ class LoginValidation_Service:
         cursor = conn.cursor()
         print("Email type:", type(email))
         print("Password type:", type(password))
-        cursor.execute("SELECT COUNT(1) FROM EmployeeRecord WHERE Email = ? AND Password = ?", (email, password))
-        result = cursor.fetchone()
+        cursor.execute("SELECT * FROM EmployeeRecord WHERE Email = ? AND Password = ?", (email, password))
+        result = cursor.fetchall()
+        print('result' , result)
         conn.close()
-        return result[0] > 0
+        return [row[4] for row in result]

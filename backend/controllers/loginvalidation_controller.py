@@ -26,8 +26,9 @@ def verify_password():
         if not email or not password:
             return jsonify({"error": "Missing fields"}), 400
 
-        is_valid = email_service.verify_password(email, password)
-        return jsonify({"exists": is_valid, "isAdmin": "true" if is_valid else "false"})
+        value = email_service.verify_password(email, password)
+        print('is_valid' , value)
+        return jsonify({'isValid': value}), 200
 
     except Exception as e:
         print("Error in verify-password:", e)
