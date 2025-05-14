@@ -191,6 +191,7 @@
   font-size: 1.2rem;
   width:35%;
   margin-left:2rem;
+  margin-top:1rem;
 }
 
 .rcb-chat-input{
@@ -216,6 +217,7 @@
   border: 1px solid #000000;
   font-family: 'Cambria';
   font-style: italic;
+  color:#000000;
 }
 
 @keyframes flameFlicker {
