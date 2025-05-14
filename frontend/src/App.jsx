@@ -5,6 +5,9 @@ import logo from '../src/assets/ut_logo.png'
 import burger from './assets/align-justify.svg'
 import backImg from'./assets/pictu.webp'
 import robot from'../public/robot_logo.png'
+import 'primeflex/primeflex.css';
+import BotIcon from './assets/robot.png'
+import UserIcon from './assets/man.png'
 
 
 const App = () => {
@@ -23,6 +26,23 @@ const App = () => {
   const[count , setCount] = useState(0)
   const[responseData , setResponseData] = useState(0)
   
+
+    const settings = {
+    general: { embedded: true },
+    header: {
+      visible: false,
+      title: "Track Bot",
+      style: { color: "red", fontSize: "18px", fontWeight: "bold" }
+    },
+    botBubble: {
+    showAvatar: true,
+    avatar: BotIcon,  // Path to your bot icon
+  },
+  userBubble: {
+    showAvatar: true,
+    avatar: UserIcon, // Path to your user icon
+  },
+  };
 
   const flow = {
     start: {
@@ -262,19 +282,13 @@ const App = () => {
   console.log('project details' , projectSelected , count)
   return (
     <div>
+      <div class="md-col-5 lg-col-6 sm-col-10">
     <div style={{ position: "fixed", bottom: "20px", right: "20px", zIndex: 9999 }}>
     <ChatBot
-      flow={flow}
-      settings={{
-        general: { embedded: true },
-        header: {
-          visible: false,
-          title: "Track Bot",
-          style: { color: "red", fontSize: "18px", fontWeight: "bold" },
-        }
-       
-      }}
+        flow={flow}
+        settings={settings}
     />
+    </div>
     </div>
     <div>
       <div class="header_section">
@@ -288,8 +302,8 @@ const App = () => {
       </img>
       </div> */}
       <div class="div_section">
-         <div class="glow mt-24 ml-24 d-flex">Track your team's Progress with us</div>
-         <div class="glow  para mt-8 ml-30 d-flex">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
+         <div class="glow mt-24 ml-24 d-flex md-col-4 lg-col-4 sm-col-12 ">Track your team's Progress with us</div>
+         <div class="glow  para mt-16 ml-16 d-flex md-col-6 lg-col-4 sm-col-12 ">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
       </div>
     </div>
 
