@@ -36,6 +36,7 @@ Answer the following admin query based on the above data:
 
 since I am getting direct asnwers from you and displaying to the user do dont use from the above data like sentences
 
+dont show email name a name of the user take name out of email and show it to the user
 """
 
     # Get AI response

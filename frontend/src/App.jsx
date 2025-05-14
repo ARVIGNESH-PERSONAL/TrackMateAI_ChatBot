@@ -42,17 +42,27 @@ const App = () => {
     showAvatar: true,
     avatar: UserIcon, // Path to your user icon
   },
+  audio:{
+    disabled:false
+  },
+  voice: {disabled: false},
+  device:{
+    desktopEnabled:true,
+    mobileEnabled:true,
+    applyMobileOptimizations:true
+  }
   };
+
 
   const flow = {
     start: {
       message: "Hello! Welcome to United Techno Chatbot",
       path: "emailPrompt",
       user:true,
-      transition: {duration: 2000}
+      transition: {duration: 1000}
     },
     emailPrompt: {
-      message: " May I have your Name please?",
+      message: " May I have your Email please?",
       path: async (input) => {
   const res = await fetch("http://127.0.0.1:5000/api/check-email", {
     method: "POST",
@@ -72,7 +82,7 @@ const App = () => {
 },
     },
     emailError: {
-      message: "❌ The name provided was not matching with our records. Try again.",
+      message: "❌ The Email provided was not matching with our records. Try again.",
       path: "emailPrompt",
       transition: {duration: 2000}   
     },
@@ -303,7 +313,7 @@ const App = () => {
       </div> */}
       <div class="div_section">
          <div class="glow mt-24 ml-24 d-flex md-col-4 lg-col-4 sm-col-12 ">Track your team's Progress with us</div>
-         <div class="glow  para mt-16 ml-16 d-flex md-col-6 lg-col-4 sm-col-12 ">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
+         <div class="  para mt-16 ml-16 d-flex md-col-6 lg-col-4 sm-col-12 ">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
       </div>
     </div>
 

@@ -72,7 +72,7 @@
 
   font-size: 0.8rem;
   font-style:italic;
-  background-color: #82868d !important;
+  background-color: #b9c2d3!important;
   color:#000000 !important;
   font-weight: 700 !important;
   border-radius:5px  20px  20px  20px;
@@ -133,22 +133,22 @@
 
     @keyframes glowPulse {
       0% {
-        text-shadow: 0 0 5px #fff,
-                     0 0 10px #0ff,
-                     0 0 15px #0ff,
-                     0 0 20px #0ff;
+        text-shadow: 0 0 2px #fff,
+                     0 0 5px #0ff,
+                     0 0 8px #0ff,
+                     0 0 10px #0ff;
       }
       50% {
-        text-shadow: 0 0 10px #0ff,
-                     0 0 20px #0ff,
-                     0 0 30px #0ff,
-                     0 0 40px #0ff;
-      }
-      100% {
-        text-shadow: 0 0 5px #fff,
-                     0 0 10px #0ff,
+        text-shadow: 0 0 5px #0ff,
+                     0 0 8px #0ff,
                      0 0 15px #0ff,
                      0 0 20px #0ff;
+      }
+      100% {
+         text-shadow: 0 0 2px #fff,
+                     0 0 5px #0ff,
+                     0 0 8px #0ff,
+                     0 0 10px #0ff;
       }
     }
 
@@ -192,10 +192,12 @@
   width:35%;
   margin-left:2rem;
   margin-top:1rem;
+  color:#ffff;
+  font-weight: 600;
 }
 
 .rcb-chat-input{
-   background-color: #4a33b3;
+background-image: linear-gradient(to right, rgb(73, 29, 141), rgb(66, 176, 197)) !important;
    border:none;
 }
 
@@ -217,7 +219,7 @@
   border: 1px solid #000000;
   font-family: 'Cambria';
   font-style: italic;
-  color:#000000;
+  
 }
 
 @keyframes flameFlicker {
@@ -242,4 +244,8 @@
       0 0 8px #ff3300,
       0 0 12px #cc2200;
   }
+}
+
+.rcb-chat-input-textarea::placeholder{
+  color:#ffff;
 }
