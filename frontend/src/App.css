@@ -124,11 +124,16 @@
  .glow {
       font-size: 2rem;
       color: #fff;
-      animation: glowPulse 3s ease-in-out infinite;
+      animation: glowPulse 3s ease-in-out infinite,
+                typing 10s steps(28) 1s infinite, 
+                infinite, blink 4s step-end infinite;
       font-family: 'Arial', sans-serif;
       margin-left:2rem;
       margin-top:3rem;
       display: flex;
+      overflow: hidden;
+      text-wrap: nowrap;
+      padding:0.5rem;
     }
 
     @keyframes glowPulse {
@@ -168,8 +173,8 @@
 
 @keyframes typing {
   0% { width: 0 }
-  50% { width: 18ch } /* Adjust to your text length */
-  90% { width: 18ch }
+  50% { width: 28ch } /* Adjust to your text length */
+  90% { width: 28ch }
   100% { width: 0 }
 }
 
@@ -190,7 +195,7 @@
 .para{
   font-size: 1.2rem;
   width:35%;
-  margin-left:2rem;
+  margin-left:3rem;
   margin-top:1rem;
   color:#ffff;
   font-weight: 600;

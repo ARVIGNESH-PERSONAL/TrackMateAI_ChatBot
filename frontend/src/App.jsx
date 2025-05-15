@@ -18,7 +18,7 @@ const App = () => {
     "APT", "UI Automation", "Heinrishein"
   ]);
   const [statusOptions, setStatusOptions] = useState([
-    "Development", "Training", "Testing"
+    "Development", "Training", "Testing" , "Analysis", "Design" ,"Environmental setup" , "Meeting"
   ]);
   const [projectSelected, setProjectSelected] = useState([{
     projectName: '', projectStatus: '', projectDescription: ''
@@ -112,12 +112,12 @@ const App = () => {
   });
   const projectResData  = await projectRes.json();
   console.log("verify result", projectResData );
-  setProjectOptions(projectResData.projects)
+  setProjectOptions(projectResData?.projects)
   }
   
 
 
-
+console.log('respo' , responseData.isValid[0])
   if (responseData .isValid[0]) {
     setData(prev => ({
       ...prev,
@@ -253,6 +253,7 @@ const App = () => {
     },
     responseLoader:{
       message: `yes I can help you with that '${responseData.response}'`,
+      transition:  1000,
       path: async (input) => {
         if(input.userInput){
         return "adminElseStatement"
@@ -311,10 +312,10 @@ const App = () => {
       <img src={backImg} class="back-image">
       </img>
       </div> */}
-      <div class="div_section">
+      <div class="div_section">6
          <div class="glow mt-24 ml-24 d-flex md-col-4 lg-col-4 sm-col-12 ">Track your team's Progress with us</div>
          <div class="  para mt-16 ml-16 d-flex md-col-6 lg-col-4 sm-col-12 ">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
-      </div>
+         </div>
     </div>
 
     </div>
