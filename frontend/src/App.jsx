@@ -5,6 +5,9 @@ import logo from '../src/assets/ut_logo.png'
 import burger from './assets/align-justify.svg'
 import backImg from'./assets/pictu.webp'
 import robot from'../public/robot_logo.png'
+import 'primeflex/primeflex.css';
+import BotIcon from './assets/robot.png'
+import UserIcon from './assets/man.png'
 
 
 const App = () => {
@@ -15,7 +18,7 @@ const App = () => {
     "APT", "UI Automation", "Heinrishein"
   ]);
   const [statusOptions, setStatusOptions] = useState([
-    "Development", "Training", "Testing"
+    "Development", "Training", "Testing" , "Analysis", "Design" ,"Environmental setup" , "Meeting"
   ]);
   const [projectSelected, setProjectSelected] = useState([{
     projectName: '', projectStatus: '', projectDescription: ''
@@ -24,15 +27,42 @@ const App = () => {
   const[responseData , setResponseData] = useState(0)
   
 
+    const settings = {
+    general: { embedded: true },
+    header: {
+      visible: false,
+      title: "Track Bot",
+      style: { color: "red", fontSize: "18px", fontWeight: "bold" }
+    },
+    botBubble: {
+    showAvatar: true,
+    avatar: BotIcon,  // Path to your bot icon
+  },
+  userBubble: {
+    showAvatar: true,
+    avatar: UserIcon, // Path to your user icon
+  },
+  audio:{
+    disabled:false
+  },
+  voice: {disabled: false},
+  device:{
+    desktopEnabled:true,
+    mobileEnabled:true,
+    applyMobileOptimizations:true
+  }
+  };
+
+
   const flow = {
     start: {
       message: "Hello! Welcome to United Techno Chatbot",
       path: "emailPrompt",
       user:true,
-      transition: {duration: 2000}
+      transition: {duration: 1000}
     },
     emailPrompt: {
-      message: " May I have your Name please?",
+      message: " May I have your Email please?",
       path: async (input) => {
   const res = await fetch("http://127.0.0.1:5000/api/check-email", {
     method: "POST",
@@ -52,7 +82,7 @@ const App = () => {
 },
     },
     emailError: {
-      message: "❌ The name provided was not matching with our records. Try again.",
+      message: "❌ The Email provided was not matching with our records. Try again.",
       path: "emailPrompt",
       transition: {duration: 2000}   
     },
@@ -82,12 +112,12 @@ const App = () => {
   });
   const projectResData  = await projectRes.json();
   console.log("verify result", projectResData );
-  setProjectOptions(projectResData.projects)
+  setProjectOptions(projectResData?.projects)
   }
   
 
 
-
+console.log('respo' , responseData.isValid[0])
   if (responseData .isValid[0]) {
     setData(prev => ({
       ...prev,
@@ -223,6 +253,7 @@ const App = () => {
     },
     responseLoader:{
       message: `yes I can help you with that '${responseData.response}'`,
+      transition:  1000,
       path: async (input) => {
         if(input.userInput){
         return "adminElseStatement"
@@ -262,19 +293,13 @@ const App = () => {
   console.log('project details' , projectSelected , count)
   return (
     <div>
+      <div class="md-col-5 lg-col-6 sm-col-10">
     <div style={{ position: "fixed", bottom: "20px", right: "20px", zIndex: 9999 }}>
     <ChatBot
-      flow={flow}
-      settings={{
-        general: { embedded: true },
-        header: {
-          visible: false,
-          title: "Track Bot",
-          style: { color: "red", fontSize: "18px", fontWeight: "bold" },
-        }
-       
-      }}
+        flow={flow}
+        settings={settings}
     />
+    </div>
     </div>
     <div>
       <div class="header_section">
@@ -287,10 +312,10 @@ const App = () => {
       <img src={backImg} class="back-image">
       </img>
       </div> */}
-      <div class="div_section">
-         <div class="glow mt-24 ml-24 d-flex">Track your team's Progress with us</div>
-         <div class="glow  para mt-8 ml-30 d-flex">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
-      </div>
+      <div class="div_section">6
+         <div class="glow mt-24 ml-24 d-flex md-col-4 lg-col-4 sm-col-12 ">Track your team's Progress with us</div>
+         <div class="  para mt-16 ml-16 d-flex md-col-6 lg-col-4 sm-col-12 ">TrackBot is an intelligent assistant designed to collect task progress from users and assist administrators with real-time insights, streamlining project monitoring and communication</div>
+         </div>
     </div>
 
     </div>
